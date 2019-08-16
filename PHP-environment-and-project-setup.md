@@ -103,7 +103,9 @@ composer global require friendsofphp/php-cs-fixer
 "php-cs-fixer.config": ".php_cs;.php_cs.dist",
 "php-cs-fixer.allowRisky": false,
 "php-cs-fixer.pathMode": "override",
-"php-cs-fixer.exclude": [],
+"php-cs-fixer.exclude": [
+    "*/vendor/*"
+  ], // Exclude vendor folder from scanning
 "php-cs-fixer.autoFixByBracket": true,
 "php-cs-fixer.autoFixBySemicolon": false,
 "php-cs-fixer.formatHtml": false,
