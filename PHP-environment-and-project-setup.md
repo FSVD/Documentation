@@ -96,8 +96,8 @@ composer global require friendsofphp/php-cs-fixer
 #### Edit VSCode settings (File > Preferences > Settings) and add following configuration:
 
 ```
-"php-cs-fixer.executablePath": "php-cs-fixer",
-"php-cs-fixer.executablePathWindows": "php-cs-fixer.bat",
+"php-cs-fixer.executablePath": "%USERPROFILE%\AppData\Roaming\Composer\vendor\bin\php-cs-fixer", // Edit to point to php-cs-fixer file in your local machine.
+"php-cs-fixer.executablePathWindows": "%USERPROFILE%\AppData\Roaming\Composer\vendor\bin\php-cs-fixer.bat", // Edit to point to php-cs-fixer.bat file in your local machine.
 "php-cs-fixer.onsave": true,
 "php-cs-fixer.rules": "@PSR2",
 "php-cs-fixer.config": ".php_cs;.php_cs.dist",
