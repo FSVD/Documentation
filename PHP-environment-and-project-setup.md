@@ -112,6 +112,8 @@ composer global require friendsofphp/php-cs-fixer
 "php-cs-fixer.documentFormattingProvider": true
 ```
 
+<br>
+
 # Specific framework project setup
 
 ### Laravel project installation and usage:
