@@ -154,3 +154,47 @@ composer create-project --prefer-dist partner/rawphp project-name
 ```
 
 Go to [http://localhost/project-name/public/](http://localhost/project-name/public).
+
+<br>
+
+# Debug configuration setup
+
+Install Visual Studio Code [PHP debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug) extension using following command in VSCode shell.
+
+- code --install-extension felixfbecker.php-debug
+
+Wamp server comes with <strong>xDebug</strong> extension in order to debug your PHP projects.
+
+- Activate xDebug by left click on Windows taskbar Wamp icon and select > <strong>PHP</strong> > <strong>PHP settings</strong> > <strong>xdebug.remote_enable</strong>.
+- Edit <strong>php.ini</strong> by left click on Windows taskbar Wamp icon and select > <strong>PHP</strong> > <strong>php.ini</strong> and add following line in the <strong>[xdebug]</strong> section.
+
+```
+xdebug.remote_autostart = 1
+```
+
+Use following configuration in <strong>launch.json</strong> file to debug project.
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for XDebug",
+      "type": "php",
+      "request": "launch",
+      "port": 9000,
+      "ignore": ["**/vendor/**/*.php"]
+    },
+    {
+      "name": "Launch currently open script",
+      "type": "php",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${fileDirname}",
+      "port": 9000
+    }
+  ]
+}
+```
+
+<i>If you configured XDebug and VSCode like recommended above, everytime you make a request with a browser to your webserver XDebug will connect and stop on breakpoints, exceptions etc. in VSCode debug panel.</i>
