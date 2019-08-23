@@ -8,24 +8,24 @@ php artisan app:name your-app-name
 
 ### Rename project app folder
 
-- Rename <strong>app</strong> folder to your favourite name (e.g. src, lib etc).
-- Edit <strong>composer.json</strong> file PSR-4 object as follow.
+Rename <strong>app</strong> folder to your favourite name (e.g. src).<br>
+Edit <strong>composer.json</strong> file PSR-4 object as follow.
 
 ```
 "autoload": {
     "psr-4": {
-        "App\\": "your_new_directory/"
+        "App\\": "src/"
     }
   },
 ```
 
-- Then in command line run:
+Execute following command in VSCode shell.
 
 ```
 composer dump-autoload
 ```
 
-### Adding Domain Driven Design (DDD) support
+### Adding Domain Driven Design (DDD) support and configuration
 
 Install laravel-modules package using following command in VSCode shell.
 
@@ -39,18 +39,34 @@ Publish configuration file using following command in VSCode shell.
 php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
 ```
 
+Edit <strong>modules.php</strong> config file in <strong>src\config</strong> folder.
+
+```
+'namespace' => 'Domains',
+
+// ... rest of the code
+
+'paths' => [
+    'modules' => base_path('src/Domains'),
+
+    // ... rest of the code
+
+],
+
+```
+
 Edit <strong>composer.json</strong> file PSR-4 object as follow.
 
 ```
 "autoload": {
     "psr-4": {
-        "App\\": "your_new_directory/",
-        "Modules\\": "Modules/"
+        "App\\": "src/",
+        "Domains\\": "src/Domains"
     }
   },
 ```
 
-Reload classes using following command in VSCode shell.
+Execute following command in VSCode shell.
 
 ```
 composer dump-autoload
