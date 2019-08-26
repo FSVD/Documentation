@@ -1,4 +1,4 @@
-### Change project name and set the application namespace
+# Change project name and set the application namespace
 
 In command line run:
 
@@ -6,7 +6,9 @@ In command line run:
 php artisan app:name your-app-name
 ```
 
-### Rename project app folder
+<br>
+
+# Rename project app folder
 
 Rename <strong>app</strong> folder to your favourite name (e.g. src).<br>
 Edit <strong>composer.json</strong> file PSR-4 object as follow.
@@ -19,13 +21,38 @@ Edit <strong>composer.json</strong> file PSR-4 object as follow.
   },
 ```
 
+Create a new <strong>Application.php</strong> wherever you want (e.g. app folder), extends default Laravel application class adding a protected <strong>\$appPath</strong> attribute with <strong>\_\_DIR\_\_</strong> value.
+
+```
+<?php
+
+namespace App;
+
+use Illuminate\Foundation\Application as IlluminateApplication;
+
+class Application extends IlluminateApplication
+{
+    protected $appPath = __DIR__;
+}
+```
+
+In the <strong>bootstrap/app.php</strong> file edit app instance creation pointing to new <strong>Application</strong> class.
+
+```
+$app = new App\Application(
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
+);
+```
+
 Execute following command in VSCode shell.
 
 ```
 composer dump-autoload
 ```
 
-### Adding Domain Driven Design (DDD) support and configuration
+<br>
+
+# Add Domain Driven Design (DDD) support and configuration
 
 Install laravel-modules package using following command in VSCode shell.
 
